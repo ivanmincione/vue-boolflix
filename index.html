@@ -21,10 +21,17 @@
                     <img src="https://www.ailequal.com/ajax-ex-boolflix/img/boolflix.png" alt="">
                 </div>
 
-                <div class="search-bar">
-                    <input type="text" name="" value="" placeholder="Cerca un film, serie tv ....." v-model="filterSearch" @keyUp.enter="btnResearch">
+                <div class="search-container">
+                    <input class="search-input" type="text" name="" value="" placeholder="Cerca film, serie tv ....." v-model="filterSearch" @keyUp.enter="btnResearch">
+                    <a href="#" class="found-btn" @click="btnResearch" >
+                        <i class="fas fa-search"></i>
+                    </a>
+                </div>
+
+                <div class="">
                     <button id="btn-search" type="button" name="button" @click="btnResearch"> CERCA </button>
                 </div>
+
             </header>
 
             <section class="container-box">
