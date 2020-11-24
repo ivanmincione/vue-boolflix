@@ -2,6 +2,8 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
+        <!-- FONTAWESOME -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
         <!-- VUE.JS -->
 	    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
         <!-- AXIOS -->
@@ -31,8 +33,15 @@
                     <img src="https://www.softwareone.it/public/layout/uploads/2019/05/movavi-video-editor-icona.png" alt="">
                     <h2> {{ movie.title }}</h2>
                     <h3> {{ movie.original_title }}</h3>
-                    <p> {{ movie.original_language}}</p>
+                    <img id="flags" :src="movie.original_language" :alt="movie.original_language">
                     <p> {{ movie.vote_average }}</p>
+                    <p>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </p>
 
 
                 </div>

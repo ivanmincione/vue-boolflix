@@ -20,7 +20,26 @@ var app = new Vue ({
 
                 console.log(this.movies);
             })
+            .then((reply) => {
+                this.movies.forEach((movie) => {
+                    if(movie.original_language == "en") {
+                        movie.original_language = "Flags/engFlag.png";
+                    } else if (movie.original_language == "it") {
+                        movie.original_language = "Flags/itaFlag.png";
+                    } else if (movie.original_language == "fr") {
+                        movie.original_language = "Flags/fraFlag.png";
+                    } else if (movie.original_language == "es") {
+                        movie.original_language = "Flags/spaFlag.png";
+                    } else if (movie.original_language == "de") {
+                        movie.original_language = "Flags/gerFlag.png";
+                    }
+                })
+            })
+            
         }
+
+
+    //end METHODS
     }
 
 

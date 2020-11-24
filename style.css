@@ -47,9 +47,8 @@ header{
 
 .box{
     width: 200px;
-    height: 400px;
+    min-height: 400px;
     border: 1px solid;
-    background-color: lightgreen;
     text-align: center;
     margin: 20px;
 }
@@ -61,4 +60,10 @@ header{
 
 .box h2, .box h3, .box p {
     margin-bottom: 10px;
+}
+
+#flags{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
 }
