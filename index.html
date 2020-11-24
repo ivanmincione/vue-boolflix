@@ -25,23 +25,29 @@
                     <input type="text" name="" value="" placeholder="Cerca un film, serie tv ....." v-model="filterSearch" @keyUp.enter="btnResearch">
                     <button id="btn-search" type="button" name="button" @click="btnResearch"> CERCA </button>
                 </div>
-
             </header>
 
             <section class="container-box">
-                <div class="box" v-for="movie in movies">
+                <div class="box" v-for="movie in arrayMoviesSeries">
                     <img src="https://www.softwareone.it/public/layout/uploads/2019/05/movavi-video-editor-icona.png" alt="">
-                    <h2> {{ movie.title }}</h2>
-                    <h3> {{ movie.original_title }}</h3>
-                    <img id="flags" :src="movie.original_language" :alt="movie.original_language">
-                    <p> {{ movie.vote_average }}</p>
-                    <p>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </p>
+                    <h2> {{ movie.title ? movie.title : movie.name }}</h2>
+                    <h3> {{ movie.original_title ? movie.original_title : movie.original_name }}</h3>
+
+                    <ul>
+                        <li v-if="languageFlag.includes(movie.original_language)">
+                            <img id="flags" :src="'flag/' + movie.original_language + '.png' " :alt="movie.original_language">
+                        </li>
+                        <li v-else>
+                            {{ movie.original_language }}
+                        </li>
+                        <li>
+                            <i v-for="i in votation(movie.vote_average)" class="fas fa-star"></i>
+                            <i v-for="i in 5 - (votation(movie.vote_average))" class="far fa-star"></i>
+                        </li>
+                        <li>
+                            {{ movie.vote_average }}
+                        </li>
+                    </ul>
 
 
                 </div>
