@@ -18,6 +18,10 @@ var app = new Vue ({
         loading: false,
         // titolo della ricerca effettuata
         titleSearch:'',
+        // url base da concatenare con url di ogni box
+        urlPoster: "https://image.tmdb.org/t/p/",
+        // url da inserire nel caso il poster di un film sia NULL
+        urlNullPoster: "https://www.softwareone.it/public/layout/uploads/2019/05/movavi-video-editor-icona.png",
 
     },
 

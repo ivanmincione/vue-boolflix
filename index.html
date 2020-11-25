@@ -50,8 +50,17 @@
             <section class="container-box">
 
                 <div class="box" v-for="movie in arrayMoviesSeries">
-                    <!-- copertina del film -->
-                    <img src="https://www.softwareone.it/public/layout/uploads/2019/05/movavi-video-editor-icona.png" alt="">
+                    <!-- copertina del FILM o SERIE TV -->
+                    <ul>
+                        <li v-if="movie.poster_path != 'null'">
+                            <img :src="urlPoster + 'w185' + movie.poster_path " :alt="urlNullPoster">
+                        </li>
+                        <li v-else>
+                            <img src="https://www.softwareone.it/public/layout/uploads/2019/05/movavi-video-editor-icona.png" alt="">
+                        </li>
+                    </ul>
+
+
                     <h2> {{ movie.title ? movie.title : movie.name }}</h2>
                     <h3> {{ movie.original_title ? movie.original_title : movie.original_name }}</h3>
 
