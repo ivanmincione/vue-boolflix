@@ -13,7 +13,7 @@ var app = new Vue ({
         // input search
         filterSearch:'',
         // array delle lingue abbinate alle FLAGS
-        languageFlag: ['it', 'en', 'es', 'fr', 'de'],
+        languageFlag: ['it', 'en', 'es', 'fr', 'de','ja','ru','sk','uk','zh'],
         // variabile per il loading
         loading: false,
         // titolo della ricerca effettuata
