@@ -52,7 +52,7 @@
                             <i v-for="i in 5 - (votation(movie.vote_average))" class="far fa-star"></i>
                         </li>
                         <li>
-                            {{ movie.vote_average }}
+                            {{ (votation(movie.vote_average)) }}
                         </li>
                     </ul>
 
