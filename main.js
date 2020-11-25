@@ -76,9 +76,43 @@ var app = new Vue ({
             return number
         },
 
+        returnHomePage() {
+            this.arrayMoviesSeries = [];
+            let testoRicercato = this.filterSearch;
+            // svuoto l'input e la barra dei titoli della ricerca
+            this.filterSearch = '';
+            this.titleSearch = testoRicercato;
+            axios.get( urlApiKey + "movie/top_rated" , {
+                params:{
+                    api_key: myApiKey,
+                    // query: testoRicercato
+                    query: '',
+                }
+            })
+            // assegno i risultati della chiamata all'array dei FILM
+            .then((reply) => {
+                this.arrayMoviesSeries = reply.data.results;
+            })
+        }
+
 
     //end METHODS
-    }
+    },
+
+    mounted() {
+        // chiamata per recuperare la lista dei FILM più visti da metterecome HOME PAGE
+        axios.get( urlApiKey + "movie/top_rated" , {
+            params:{
+                api_key: myApiKey,
+                // query: testoRicercato
+                query: '',
+            }
+        })
+        // assegno i risultati della chiamata all'array dei FILM
+        .then((reply) => {
+            this.arrayMoviesSeries = reply.data.results;
+        })
+    },
 
 
 

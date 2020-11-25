@@ -37,6 +37,7 @@ header{
 .logo-header img{
     width: 100%;
     margin-left: 40px;
+    cursor: pointer;
 }
 
 /* barra di ricerca */
