@@ -34,8 +34,23 @@
 
             </header>
 
+            <div class="title-research">
+                <!-- aggiungere controlli -->
+                <h1 v-if="loading">
+                    Loading ...
+                </h1>
+                <h1 v-else-if="titleSearch && arrayMoviesSeries.length ">
+                    Risultati per : "{{ titleSearch }}"
+                </h1>
+                <h1 v-else-if="titleSearch">
+                    Nessun risultato trovato per : {{ titleSearch }}
+                </h1>
+            </div>
+
             <section class="container-box">
+
                 <div class="box" v-for="movie in arrayMoviesSeries">
+                    <!-- copertina del film -->
                     <img src="https://www.softwareone.it/public/layout/uploads/2019/05/movavi-video-editor-icona.png" alt="">
                     <h2> {{ movie.title ? movie.title : movie.name }}</h2>
                     <h3> {{ movie.original_title ? movie.original_title : movie.original_name }}</h3>
@@ -48,7 +63,9 @@
                             {{ movie.original_language }}
                         </li>
                         <li>
+                            <!-- stampo le star piene in base al voto -->
                             <i v-for="i in votation(movie.vote_average)" class="fas fa-star"></i>
+                            <!-- stampo le star vuote sottraendole al voto -->
                             <i v-for="i in 5 - (votation(movie.vote_average))" class="far fa-star"></i>
                         </li>
                         <li>

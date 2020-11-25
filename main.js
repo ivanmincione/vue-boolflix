@@ -1,3 +1,6 @@
+const urlApiKey = "https://api.themoviedb.org/3/";
+const myApiKey = "2d2a4a44dc798710847157dec0ed05f2";
+
 var app = new Vue ({
     el: '#root',
     data: {
@@ -11,39 +14,55 @@ var app = new Vue ({
         filterSearch:'',
         // array delle lingue abbinate alle FLAGS
         languageFlag: ['it', 'en', 'es', 'fr', 'de'],
+        // variabile per il loading
+        loading: false,
+        // titolo della ricerca effettuata
+        titleSearch:'',
 
     },
 
     methods: {
         // funzione abbianta al bottone per la ricerca
         btnResearch() {
-            // chiamata per recuperare la lista dei FILM
-            axios.get("https://api.themoviedb.org/3/search/movie" , {
-                params:{
-                    api_key: "2d2a4a44dc798710847157dec0ed05f2",
-                    query: this.filterSearch
-                }
-            })
-            // assegno i risultati della chiamata all'array dei FILM
-            .then((reply) => {
-                this.movies = reply.data.results;
+            if(this.filterSearch.trim() !='') {
+                this.loading = true;
+                // svuoto il contenitore
+                this.arrayMoviesSeries = [];
+                let testoRicercato = this.filterSearch;
+                // svuoto l'input
                 this.filterSearch = '';
-            })
+                this.titleSearch = testoRicercato;
 
-            // chiamata per recuperare la lista delle SERIE TV
-            axios.get("https://api.themoviedb.org/3/search/tv" , {
-                params:{
-                    api_key: "2d2a4a44dc798710847157dec0ed05f2",
-                    query: this.filterSearch
-                }
-            })
-            // assegno i risulati ottenuti dalla chiamata all'array SERIE TV
-            .then((reply) => {
-                this.series = reply.data.results;
-                this.filterSearch = '';
-                // unisco gli array dei FILM e delle SERIE TV
-                this.arrayMoviesSeries = this.movies.concat(this.series);
-            })
+                // chiamata per recuperare la lista dei FILM
+                axios.get( urlApiKey + "search/movie" , {
+                    params:{
+                        api_key: myApiKey,
+                        query: testoRicercato
+                    }
+                })
+                // assegno i risultati della chiamata all'array dei FILM
+                .then((reply) => {
+                    this.movies = reply.data.results;
+                })
+
+                // chiamata per recuperare la lista delle SERIE TV
+                axios.get( urlApiKey + "search/tv" , {
+                    params:{
+                        api_key: myApiKey,
+                        query: testoRicercato
+                    }
+                })
+                // assegno i risulati ottenuti dalla chiamata all'array SERIE TV
+                .then((reply) => {
+                    this.series = reply.data.results;
+    //-----------> // this.filterSearch = '';
+                    // unisco gli array dei FILM e delle SERIE TV
+                    this.arrayMoviesSeries = this.movies.concat(this.series);
+                    this.loading = false;
+                })
+            // end if
+            }
+
 
         },
 

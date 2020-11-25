@@ -13,9 +13,8 @@ body{
 }
 
 #root{
-    max-width: 1170px;
+    width: 100vw;
     height: 100vh;
-    margin: 0 auto;
 }
 
 header{
@@ -25,6 +24,7 @@ header{
     align-items: center;
     margin-bottom: 50px;
     border-bottom: 2px solid red;
+    background-color: black;
 }
 
 .logo-header{
@@ -32,12 +32,13 @@ header{
 }
 .logo-header img{
     width: 100%;
+    margin-left: 40px;
 }
 
 /* barra di ricerca */
 .search-container{
     background: white;
-    height: 30px;
+    height: 50px;
     border-radius: 30px;
     padding: 10px 20px;
     display: flex;
@@ -61,6 +62,7 @@ header{
     outline: none;
     width: 0px;
     transition: 0.8s;
+
 }
 
 .search-input:focus{
@@ -92,23 +94,35 @@ header{
 	display:inline-block;
 	cursor:pointer;
 	color:white;
-	/* font-family:Arial; */
 	font-size:20px;
 	font-weight:bold;
 	padding:10px 30px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px white;
+    margin-right: 40px;
 }
 #btn-search:hover {
 	background:linear-gradient(to bottom, #f0bbc0 5%, #fa000d 100%);
 	background-color:#f0bbc0;
 }
 
+/* div per messaggi della ricerca */
+
+.title-research{
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+
 /* box film */
 .container-box{
+    max-width: 1170px;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin: 0 auto;
 
 }
 
