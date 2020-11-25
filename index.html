@@ -40,7 +40,7 @@
                     Loading ...
                 </h1>
                 <h1 v-else-if="titleSearch && arrayMoviesSeries.length ">
-                    Risultati per : "{{ titleSearch }}"
+                    {{arrayMoviesSeries.length }} Risultati per : "{{ titleSearch }}"
                 </h1>
                 <h1 v-else-if="titleSearch">
                     Nessun risultato trovato per : {{ titleSearch }}
@@ -62,7 +62,7 @@
                         <li v-else>
                             {{ movie.original_language }}
                         </li>
-                        <li>
+                        <li id="icon-star">
                             <!-- stampo le star piene in base al voto -->
                             <i v-for="i in votation(movie.vote_average)" class="fas fa-star"></i>
                             <!-- stampo le star vuote sottraendole al voto -->

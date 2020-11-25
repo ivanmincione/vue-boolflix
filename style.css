@@ -8,6 +8,10 @@ ul{
     list-style-type: none;
 }
 
+#icon-star i{
+    color: yellow;
+}
+
 body{
     background-color: rgb(101, 100, 100);
 }
