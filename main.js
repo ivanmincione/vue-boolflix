@@ -59,7 +59,6 @@ var app = new Vue ({
                 // assegno i risulati ottenuti dalla chiamata all'array SERIE TV
                 .then((reply) => {
                     this.series = reply.data.results;
-    //-----------> // this.filterSearch = '';
                     // unisco gli array dei FILM e delle SERIE TV
                     this.arrayMoviesSeries = this.movies.concat(this.series);
                     this.loading = false;
@@ -76,6 +75,7 @@ var app = new Vue ({
             return number
         },
 
+        // funzione per tornare alla HOME PAGE
         returnHomePage() {
             this.arrayMoviesSeries = [];
             let testoRicercato = this.filterSearch;
@@ -89,7 +89,7 @@ var app = new Vue ({
                     query: '',
                 }
             })
-            // assegno i risultati della chiamata all'array dei FILM
+            // assegno i risultati della chiamata all'array dei FILM e SERIE TV uniti
             .then((reply) => {
                 this.arrayMoviesSeries = reply.data.results;
             })
@@ -113,8 +113,6 @@ var app = new Vue ({
             this.arrayMoviesSeries = reply.data.results;
         })
     },
-
-
 
 // end VUE
 });

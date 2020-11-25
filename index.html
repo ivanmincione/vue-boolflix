@@ -18,6 +18,7 @@
 
             <header>
                 <div class="logo-header">
+                    <!-- al click sul logo riporta alla Home Page con i film Top Rated -->
                     <img src="https://www.ailequal.com/ajax-ex-boolflix/img/boolflix.png" alt="" @click="returnHomePage">
                 </div>
 
@@ -35,7 +36,7 @@
             </header>
 
             <div class="title-research">
-                <!-- aggiungere controlli -->
+                <!-- controlli per il titolo della ricerca -->
                 <h1 v-if="loading">
                     Loading ...
                 </h1>
@@ -47,13 +48,13 @@
                 </h1>
             </div>
 
+            <!-- sezione contenente tutte le card dei film -->
             <section class="container-box">
-
                 <div class="card" v-for="movie in arrayMoviesSeries">
-                    <!-- copertina del FILM o SERIE TV -->
                     <div class="box">
                         <div class="imgBx">
                             <ul>
+                                <!-- copertina del FILM o SERIE TV -->
                                 <li v-if="movie.poster_path != null">
                                     <img :src="urlPoster + 'w185' + movie.poster_path " alt="https://www.softwareone.it/public/layout/uploads/2019/05/movavi-video-editor-icona.png">
                                 </li>
