@@ -35,6 +35,23 @@
 
             </header>
 
+            <div class="choice">
+                <div class="choice-film"> FILM
+                    <div class="drop-choice-film">
+                        <p @click="filmRecenti"> Ultime uscite </p>
+                        <p @click="filmPopolari"> Più popolari </p>
+                    </div>
+                </div>
+                <div class="choice-tv"> SERIE TV
+                    <div class="drop-choice-tv">
+                        <p @click="newSeries"> Nuove serie TV </p>
+                        <p @click="popularSeries"> Le più viste </p>
+                    </div>
+                </div>
+            </div>
+
+
+
             <div class="title-research">
                 <!-- controlli per il titolo della ricerca -->
                 <h1 v-if="loading">
@@ -47,6 +64,9 @@
                     Nessun risultato trovato per : {{ titleSearch }}
                 </h1>
             </div>
+
+
+
 
             <!-- sezione contenente tutte le card dei film -->
             <section class="container-box">

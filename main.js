@@ -8,6 +8,8 @@ var app = new Vue ({
         movies: [],
         // array contenente le SERIE TV ricercate
         series: [],
+        // array multi search
+        multi: [],
         // array dove concatenare i FILM e le SERIE TV
         arrayMoviesSeries: [],
         // input search
@@ -22,6 +24,8 @@ var app = new Vue ({
         urlPoster: "https://image.tmdb.org/t/p/",
         // url da inserire nel caso il poster di un film sia NULL
         urlNullPoster: "https://www.softwareone.it/public/layout/uploads/2019/05/movavi-video-editor-icona.png",
+
+        selected:"",
 
     },
 
@@ -41,7 +45,8 @@ var app = new Vue ({
                 axios.get( urlApiKey + "search/movie" , {
                     params:{
                         api_key: myApiKey,
-                        query: testoRicercato
+                        query: testoRicercato,
+                        language: 'it',
                     }
                 })
                 // assegno i risultati della chiamata all'array dei FILM
@@ -56,7 +61,8 @@ var app = new Vue ({
                 axios.get( urlApiKey + "search/tv" , {
                     params:{
                         api_key: myApiKey,
-                        query: testoRicercato
+                        query: testoRicercato,
+                        language: 'it',
                     }
                 })
                 // assegno i risulati ottenuti dalla chiamata all'array SERIE TV
@@ -66,8 +72,12 @@ var app = new Vue ({
                     this.arrayMoviesSeries = this.movies.concat(this.series);
                     this.loading = false;
                 })
+
+
             // end if
             }
+
+
 
 
         },
@@ -76,6 +86,83 @@ var app = new Vue ({
         votation(val) {
             var number = Math.round(parseFloat(val) / 2 );
             return number
+        },
+
+        filmRecenti() {
+            this.arrayMoviesSeries = [];
+            let testoRicercato = this.filterSearch;
+            // svuoto l'input e la barra dei titoli della ricerca
+            this.filterSearch = '';
+            this.titleSearch = testoRicercato;
+            axios.get( urlApiKey + "movie/now_playing" , {
+                params:{
+                    api_key: myApiKey,
+                    // query: testoRicercato
+                    // query: '',
+                    language:'it',
+                }
+            })
+            // assegno i risultati della chiamata all'array dei FILM e SERIE TV uniti
+            .then((reply) => {
+                this.arrayMoviesSeries = reply.data.results;
+            })
+        },
+
+        filmPopolari() {
+            this.arrayMoviesSeries = [];
+            let testoRicercato = this.filterSearch;
+            // svuoto l'input e la barra dei titoli della ricerca
+            this.filterSearch = '';
+            this.titleSearch = testoRicercato;
+            axios.get( urlApiKey + "movie/popular" , {
+                params:{
+                    api_key: myApiKey,
+                    // query: testoRicercato
+                    query: '',
+                }
+            })
+            // assegno i risultati della chiamata all'array dei FILM e SERIE TV uniti
+            .then((reply) => {
+                this.arrayMoviesSeries = reply.data.results;
+            })
+        },
+
+        newSeries() {
+            this.arrayMoviesSeries = [];
+            let testoRicercato = this.filterSearch;
+            // svuoto l'input e la barra dei titoli della ricerca
+            this.filterSearch = '';
+            this.titleSearch = testoRicercato;
+            axios.get( urlApiKey + "tv/on_the_air" , {
+                params:{
+                    api_key: myApiKey,
+                    // query: testoRicercato
+                    query: '',
+                }
+            })
+            // assegno i risultati della chiamata all'array dei FILM e SERIE TV uniti
+            .then((reply) => {
+                this.arrayMoviesSeries = reply.data.results;
+            })
+        },
+
+        popularSeries() {
+            this.arrayMoviesSeries = [];
+            let testoRicercato = this.filterSearch;
+            // svuoto l'input e la barra dei titoli della ricerca
+            this.filterSearch = '';
+            this.titleSearch = testoRicercato;
+            axios.get( urlApiKey + "tv/popular" , {
+                params:{
+                    api_key: myApiKey,
+                    // query: testoRicercato
+                    query: '',
+                }
+            })
+            // assegno i risultati della chiamata all'array dei FILM e SERIE TV uniti
+            .then((reply) => {
+                this.arrayMoviesSeries = reply.data.results;
+            })
         },
 
         // funzione per tornare alla HOME PAGE
@@ -96,7 +183,7 @@ var app = new Vue ({
             .then((reply) => {
                 this.arrayMoviesSeries = reply.data.results;
             })
-        }
+        },
 
 
     //end METHODS
