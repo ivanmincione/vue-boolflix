@@ -45,8 +45,11 @@ var app = new Vue ({
                     }
                 })
                 // assegno i risultati della chiamata all'array dei FILM
+                //concateno e assegno il loading ad entrambi i .then perchè essendo chiamate asincrone non sò quale viene restituita per prima
                 .then((reply) => {
                     this.movies = reply.data.results;
+                    this.arrayMoviesSeries = this.movies.concat(this.series);
+                    this.loading = false;
                 })
 
                 // chiamata per recuperare la lista delle SERIE TV
