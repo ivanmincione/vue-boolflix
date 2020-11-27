@@ -80,7 +80,7 @@
 
             <!-- sezione contenente tutte le card dei film -->
             <section class="container-box">
-                <div class="card" v-for="movie in arrayMoviesSeries">
+                <div class="card" v-for="movie in arrayMoviesSeries" v-if="(selected.id == movie.genre_ids || selected == '')">
                     <div class="box">
                         <div class="imgBx">
                             <ul>

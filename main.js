@@ -30,7 +30,7 @@ var app = new Vue ({
 
         selected:"",
         typeGenres:[],
-
+        genre_ids: [ 878, 28, 12 ],
     },
 
     methods: {
@@ -225,19 +225,18 @@ var app = new Vue ({
             this.arrayMoviesSeries = reply.data.results;
         })
 
-
+        // chiamata per filtare i film in base al genere
         axios.get( urlApiKey + "genre/movie/list" , {
             params:{
                 api_key: myApiKey,
-                // query: testoRicercato
                 query: '',
             }
         })
-        // assegno i risultati della chiamata all'array dei FILM
         .then((reply) => {
 
             this.typeGenres = reply.data.genres
             console.log(this.typeGenres);
+            
         })
 
  // end mounted
