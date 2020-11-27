@@ -8,23 +8,15 @@ ul{
     list-style-type: none;
 }
 
-#icon-star i{
-    color: yellow;
-}
-
 body{
     background-color: rgb(101, 100, 100);
     background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/85e22987-d2dd-46ca-b8b7-65cd0e31c24a/bd1d3a0b-1ae0-496c-b7b6-747b8bd6eee6/IT-it-20201123-popsignuptwoweeks-perspective_alpha_website_small.jpg");
-
 }
-
 
 #root{
     width: 100%;
     height: 100vh;
-
 }
-
 
 header{
     height: 150px;
@@ -39,6 +31,7 @@ header{
 .logo-header{
     width: 200px;
 }
+
 .logo-header img{
     width: 100%;
     margin-left: 40px;
@@ -143,7 +136,7 @@ header{
     margin-bottom: 20px;
 }
 
-.choice-film, .choice-tv{
+.choice-film, .choice-tv, .choice-genre{
     margin-left: 20px;
     color: white;
     font-size: 25px;
@@ -183,10 +176,9 @@ header{
     color: red;
 }
 
-
 /* contenitore dei box film */
 .container-box{
-    max-width: 1170px;
+    max-width: 1200px;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -240,6 +232,7 @@ header{
     object-fit: cover;
     border-radius: 20px;
     cursor: pointer;
+    backface-visibility: hidden;
 }
 
 .card .box .contentBx{
@@ -255,6 +248,7 @@ header{
     transform-style: preserve-3d;
     transform: rotateY(180deg);
     border-radius: 20px;
+    backface-visibility: hidden;
 }
 
 .card .box .contentBx .titleBx{
@@ -265,7 +259,6 @@ header{
     border: 2px solid red;
     border-radius: 10px;
     cursor: pointer;
-
 }
 
 .card .box h2, .card .box h3, .card .box li {
@@ -274,8 +267,18 @@ header{
     font-size: 14px;
 }
 
+.actors-list{
+    list-style-type: circle;
+    font-size: 10px;
+    line-height: 12px;
+}
+
 #flags{
     width: 30px;
     height: 30px;
     object-fit: cover;
+}
+
+#icon-star i{
+    color: yellow;
 }

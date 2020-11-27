@@ -48,6 +48,16 @@
                         <p @click="popularSeries"> Le più viste </p>
                     </div>
                 </div>
+
+                <div class="choice-genre"> Filtra per GENERE
+                    <div class="drop-genre">
+                        <select class="" name="" v-model="selected">
+                            <option value="">All types</option>
+                            <option v-for="genres in typeGenres" :value="genres"> {{ genres.name }} </option>
+                        </select>
+                    </div>
+                </div>
+
             </div>
 
 
@@ -105,15 +115,20 @@
                                         <!-- stampo le star vuote sottraendole al voto -->
                                         <i v-for="i in 5 - (votation(movie.vote_average))" class="far fa-star"></i>
                                     </li>
-                                    <li v-if="(votation(movie.vote_average)) != 0">
+                                    <!-- <li v-if="(votation(movie.vote_average)) != 0">
                                         voto : {{ (votation(movie.vote_average)) }}
                                     </li>
                                     <li v-else>
                                         voto : n.a.
-                                    </li>
+                                    </li> -->
+
                                     <li>
                                         Trama: {{ movie.overview.slice(0,150) }} ...
                                     </li>
+
+                                    <!-- <li v-for="cast in cast">
+                                        {{ cast.name}}
+                                    </li> -->
                                 </ul>
                             </div>
 

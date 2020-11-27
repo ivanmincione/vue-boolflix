@@ -25,7 +25,11 @@ var app = new Vue ({
         // url da inserire nel caso il poster di un film sia NULL
         urlNullPoster: "https://www.softwareone.it/public/layout/uploads/2019/05/movavi-video-editor-icona.png",
 
+
+        // cast:[],
+
         selected:"",
+        typeGenres:[],
 
     },
 
@@ -55,6 +59,24 @@ var app = new Vue ({
                     this.movies = reply.data.results;
                     this.arrayMoviesSeries = this.movies.concat(this.series);
                     this.loading = false;
+
+                    // //  test attori
+                    // this.arrayMoviesSeries.forEach((movie) => {
+                    //    // this.cast= '';
+                    //    axios.get('https://api.themoviedb.org/3/movie/' + movie.id + '/credits', {
+                    //        params: {
+                    //            api_key: myApiKey
+                    //        }
+                    //    })
+                    //    .then((reply) => {
+                    //        this.cast = reply.data.cast.slice(0,5)
+                    //
+                    //
+                    //        console.log(this.arrayMoviesSeries);
+                    //    });
+                    // });
+
+
                 })
 
                 // chiamata per recuperare la lista delle SERIE TV
@@ -72,14 +94,9 @@ var app = new Vue ({
                     this.arrayMoviesSeries = this.movies.concat(this.series);
                     this.loading = false;
                 })
-
-
             // end if
             }
-
-
-
-
+        // end btn
         },
 
         // arrotondo il numero del voto
@@ -119,6 +136,7 @@ var app = new Vue ({
                     api_key: myApiKey,
                     // query: testoRicercato
                     query: '',
+                    language: 'it',
                 }
             })
             // assegno i risultati della chiamata all'array dei FILM e SERIE TV uniti
@@ -138,6 +156,7 @@ var app = new Vue ({
                     api_key: myApiKey,
                     // query: testoRicercato
                     query: '',
+                    language: 'it',
                 }
             })
             // assegno i risultati della chiamata all'array dei FILM e SERIE TV uniti
@@ -157,6 +176,7 @@ var app = new Vue ({
                     api_key: myApiKey,
                     // query: testoRicercato
                     query: '',
+                    language: 'it',
                 }
             })
             // assegno i risultati della chiamata all'array dei FILM e SERIE TV uniti
@@ -177,14 +197,15 @@ var app = new Vue ({
                     api_key: myApiKey,
                     // query: testoRicercato
                     query: '',
+                    language: 'it',
                 }
             })
             // assegno i risultati della chiamata all'array dei FILM e SERIE TV uniti
             .then((reply) => {
                 this.arrayMoviesSeries = reply.data.results;
             })
+        // end home page
         },
-
 
     //end METHODS
     },
@@ -196,12 +217,30 @@ var app = new Vue ({
                 api_key: myApiKey,
                 // query: testoRicercato
                 query: '',
+                language: [ 'it', 'en' ]
             }
         })
         // assegno i risultati della chiamata all'array dei FILM
         .then((reply) => {
             this.arrayMoviesSeries = reply.data.results;
         })
+
+
+        axios.get( urlApiKey + "genre/movie/list" , {
+            params:{
+                api_key: myApiKey,
+                // query: testoRicercato
+                query: '',
+            }
+        })
+        // assegno i risultati della chiamata all'array dei FILM
+        .then((reply) => {
+
+            this.typeGenres = reply.data.genres
+            console.log(this.typeGenres);
+        })
+
+ // end mounted
     },
 
 // end VUE
